@@ -1,0 +1,178 @@
+/* ===============================
+   TIPOGRAFÍAS
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+/* ===============================
+   BASE
+================================ */
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #b9ac6e, #dacb77);
+  overflow: hidden;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ===============================
+   CONTENEDOR CON MARCO
+================================ */
+#story {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 700px;
+  height: 950px;
+
+  background-image: url("Libro.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+}
+
+/* ===============================
+   ÁREA INTERNA (ZONA SEGURA)
+================================ */
+#page {
+  position: relative;
+  width: 72%;
+  height: 76%;
+
+  /* Empuja el contenido hacia abajo de forma equilibrada */
+  padding: 90px 22px 40px 22px;
+
+  background: transparent;
+  overflow: hidden;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+/* Capa de legibilidad sobre la imagen */
+#page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+/* ===============================
+   IMAGEN DE ESCENA (FONDO)
+================================ */
+#sceneImage {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0.28;
+  filter: grayscale(100%) contrast(110%);
+  border-radius: 4px;
+
+  display: none;
+  z-index: 0;
+}
+
+/* ===============================
+   TEXTO NARRATIVO
+================================ */
+#text {
+  position: relative;
+  z-index: 2;
+
+  max-width: 85%;       /* 👈 evita que toque los bordes */
+  margin: 170px auto 30px auto;
+
+  font-size: 22px;
+  line-height: 1.9;     /* 👈 un poco menos para que respire mejor */
+  font-style: italic;
+  color: #000000;
+}
+
+/* ===============================
+   PORTADA
+================================ */
+.portada {
+  font-family: 'Cinzel', serif;
+  font-size: 80px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-top: 220px;
+}
+
+/* ===============================
+   OPCIONES / DECISIONES
+================================ */
+#choices {
+  position: relative;
+  z-index: 2;
+}
+
+.choice {
+  display: block;
+  margin-bottom: 18px;
+  cursor: pointer;
+
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+
+  color: #6b4e2e;
+  transition: color 0.3s ease;
+}
+
+.choice:hover {
+  color: #a07c45;
+  text-decoration: underline;
+}
+
+/* ===============================
+   SCROLL ESTILIZADO
+================================ */
+#page::-webkit-scrollbar {
+  width: 6px;
+}
+
+#page::-webkit-scrollbar-thumb {
+  background: rgba(160, 124, 69, 0.4);
+  border-radius: 4px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  #story {
+    width: 90%;
+    height: 90vh;
+  }
+
+  #page {
+    width: 78%;
+    height: 78%;
+    padding: 20px;
+  }
+
+  #text {
+    font-size: 18px;
+  }
+
+  .choice {
+    font-size: 14px;
+  }
+}
